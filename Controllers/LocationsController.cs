@@ -20,7 +20,7 @@ public class LocationsController : ControllerBase
         var currentTime = DateTime.Now;
         var availableLocations = _locations
             .Where(loc => currentTime >= loc.OpeningTime && currentTime <= loc.ClosingTime)
-            .Select(loc => new { loc.Id, loc.Name })
+            .Select(loc => new { loc.Id, loc.Name, loc.OpeningTime,loc.ClosingTime })
             .ToList();
 
         return Ok(availableLocations);
